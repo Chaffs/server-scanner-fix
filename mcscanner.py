@@ -5,7 +5,7 @@ import threading
 import time
 import argparse
 
-parser = argparse.ArgumentParser(description='get files for procesing')
+parser = argparse.ArgumentParser(description='get files for processing')
 parser.add_argument("-i", "--inputfile", type=str, help="put in the file with all the server IP's")
 parser.add_argument("-o","--outputfile", type=str, help="the name of the file to put in the results")
 parser.add_argument("-p","--publicserverlist", type=str, help="put in the file with the public server list (public.txt)")
@@ -13,7 +13,7 @@ parser.add_argument("-v","--version", type=str, default="", required=False, help
 args = parser.parse_args()
 
 masscan = []
-print('Multithreaded mass minecraft server status checker by Footsiefat/Deathmonger')
+print('Multithreaded mass minecraft server status checker by Footsiefat/Deathmonger | Fixed by Sir_Brixalot with love')
 
 time.sleep(1)
 
@@ -67,7 +67,7 @@ def print_time(threadName):
             threadName.exit()
         try:
             ip = z
-            server = JavaServer(ip,25565)
+            server = JavaServer.lookup(ip + ":25565")
             status = server.status()
         except:
             print("Failed to get status of: " + ip)
